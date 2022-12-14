@@ -1,0 +1,24 @@
+#include <iostream>
+#include <math.h>
+#include <cmath>
+
+using namespace std;
+
+double runga(double y) {
+    return 20 * (((-0.151031883)*(sqrt(y)))/((M_PI)*(pow(y,2))));
+}
+
+int main()
+{
+    double aw = 8;
+    double h = 20;
+    for (int i = 0; i <= 30; i++) {
+        double k1 = runga(aw);
+        double k2 = runga(aw + (k1/2));
+        double k3 = runga(aw + (k2/2));;
+        double k4 = runga(aw + k3);
+        aw = aw + (k1 + (2*k2) + (2*k3) + k4)/6;
+        cout<<aw<<endl;
+    }
+    return 0;
+}
